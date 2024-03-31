@@ -12,6 +12,10 @@ if [ ! -d "./xmrig" ]; then
     git clone --depth 1 https://github.com/xmrig/xmrig.git xmrig
 fi
 
+if [ ! -z "$(docker images -q myimage:mytag 2> /dev/null)" ]; then
+  docker build . -t xmrig:local
+fi
+
 docker build . -t xmrig:local
 
 docker run -dt --name ${WORKER_NAME} --cpus 3 \
