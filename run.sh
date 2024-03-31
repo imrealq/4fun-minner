@@ -18,7 +18,9 @@ fi
 
 docker build . -t xmrig:local
 
-docker run -dt --name ${WORKER_NAME} --cpus 3 \
+docker run -dt --name ${WORKER_NAME} \
+    --cpus 2 \
+    --memory 2g \
     -e "WORKER_NAME=${WORKER_NAME}" \
     -e "NAME=${NAME}" \
     -e "ADDRESS=${ADDRESS}" \
