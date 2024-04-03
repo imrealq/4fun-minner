@@ -16,8 +16,6 @@ if [ ! -z "$(docker images -q myimage:mytag 2> /dev/null)" ]; then
   docker build . -t xmrig:local
 fi
 
-docker build . -t xmrig:local
-
 docker run -dt --name ${WORKER_NAME} \
     # --cpus 2 \
     # --memory 3g \
