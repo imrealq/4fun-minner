@@ -1,5 +1,3 @@
-sudo su
-
 apt-get update
 
 apt-get install git ca-certificates curl tmux -y
