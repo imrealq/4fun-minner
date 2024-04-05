@@ -30,7 +30,7 @@ spec:
       - image: imrealq/xmrig:v0.1
         name: xmrig
         imagePullPolicy: IfNotPresent
-        command: ["xmrig"]
+        command: ["./xmrig"]
         args: ["-c", "config.json"]
         resources:
           limits:
