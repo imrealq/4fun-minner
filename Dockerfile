@@ -10,4 +10,6 @@ RUN mkdir -p /xmrig/build
 
 RUN cd /xmrig/build && cmake .. && make
 
+COPY config.json /xmrig/build
+
 WORKDIR /xmrig/build
