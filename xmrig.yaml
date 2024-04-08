@@ -38,11 +38,4 @@ spec:
             cpu: "1"
           requests:
             memory: "1.5Gi"
-            cpu: "1"      
-        volumeMounts:
-        - name: config-volume
-          mountPath: /xmrig/etc
-      volumes:
-      - name: config-volume
-        configMap:
-          name: xmrig-config
+            cpu: "1"
