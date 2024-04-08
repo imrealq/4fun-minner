@@ -17,13 +17,10 @@ if [ ! -z "$(docker images -q myimage:mytag 2> /dev/null)" ]; then
 fi
 
 docker run -dt --name ${WORKER_NAME} \
-    # --cpus 2 \
-    # --memory 3g \
+    --cpus 1 \
+    --memory 2.5g \
     -e "WORKER_NAME=${WORKER_NAME}" \
-    -e "NAME=${NAME}" \
-    -e "ADDRESS=${ADDRESS}" \
-    xmrig:local
-
-docker exec -idt ${WORKER_NAME} bash -c "./xmrig -o rx-asia.unmineable.com:3333 -u ${NAME}:${ADDRESS}.${WORKER_NAME} -p x | tee -a /var/log/minner.log"
+    xmrig:local &&
+docker exec -idt ${WORKER_NAME} bash -c "./xmrig -c config.json | tee -a /var/log/minner.log"
 
 echo "${WORKER_NAME} were started"
