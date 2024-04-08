@@ -27,7 +27,7 @@ spec:
                 - xmrig
             topologyKey: "kubernetes.io/hostname"
       containers:
-      - image: imrealq/xmrig:v0.1
+      - image: imrealq/xmrig:local
         name: xmrig
         imagePullPolicy: IfNotPresent
         command: ["./xmrig"]
