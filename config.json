@@ -72,8 +72,8 @@
         {
             "algo": null,
             "coin": null,
-            "url": "rx-asia.unmineable.com:3333",
-            "user": "XMR:49s5tb6QWppUG4ZdJW5qMsB7kUnVhnPMdVmhxZTS8MRji1RL7BT913qCN7YLWZBEoTV8Pi8g3y2J2VpuzWnv29kjEgrXZaN.cluster",
+            "url": "rx.unmineable.com:3333",
+            "user": "XMR:49s5tb6QWppUG4ZdJW5qMsB7kUnVhnPMdVmhxZTS8MRji1RL7BT913qCN7YLWZBEoTV8Pi8g3y2J2VpuzWnv29kjEgrXZaN.worker",
             "pass": "x",
             "rig-id": null,
             "nicehash": false,
