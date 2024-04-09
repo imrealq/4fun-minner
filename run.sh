@@ -19,6 +19,6 @@ fi
 docker run \
     --cpus 1 \
     --memory 2.5g \
-    -d --name ${WORKER_NAME} xmrig:local
+    -d --name ${CONTAINER_NAME} xmrig:local
 
-echo "${WORKER_NAME} were started"
+echo "${CONTAINER_NAME} were started"
