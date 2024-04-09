@@ -73,3 +73,36 @@ nano /etc/systemd/system/k3s-agent.service
 systemctl daemon-reload
 systemctl restart k3s-agent
 ```
+
+##### Chạy k3s
+https://medium.com/geekculture/deploying-a-monero-miner-to-kubernetes-d03e5bfcd4d9
+
+1. Kiểm tra lại các bước `Chạy container thông thường` nhưng không run container
+
+2. Push image lên docker hub để pull khi chạy
+    `imrealq/xmrig:local` -> sửa tên trong file `xmrig.yaml` nếu cần
+
+3. Tạo namespace
+```
+kubectl create ns xmrig
+```
+
+4. Run
+```
+kubectl apply -f xmrig.yaml
+```
+
+5. List các pod trong space là `xmrig`
+```
+kubectl get pods -n xmrig
+```
+
+6. Log chi tiết pod trong name space
+```
+kubectl describe pods -n xmrig <tên pod bước 5>
+```
+
+7. Xóa deployment tên `xmrig` trong space `xmrig`
+```
+kubectl delete deployments -n xmrig xmrig
+```
