@@ -2,7 +2,25 @@ FROM debian:bookworm-slim
 
 RUN apt update
 
-RUN apt install build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
+RUN apt install build-essential cmake libuv1-dev libssl-dev libhwloc-dev wget -y
+
+# install amd gpu
+RUN mkdir -p /tmp/opencl-driver-amd
+
+WORKDIR /tmp/opencl-driver-amd
+
+RUN wget --referer http://support.amd.com http://repo.radeon.com/amdgpu-install/22.20.3/ubuntu/jammy/amdgpu-install_22.20.50203-1_all.deb
+
+RUN apt install ./amdgpu-install_22.20.50203-1_all.deb -y
+
+RUN amdgpu-install --usecase=graphics,opencl --no-32 --no-dkms -y
+
+RUN ln -s /usr/lib/x86_64-linux-gnu/libOpenCL.so.1 /usr/lib/libOpenCL.so
+
+RUN rm -rf /tmp/opencl-driver-amd
+
+# install xmrig
+WORKDIR /
 
 COPY xmrig /xmrig
 
