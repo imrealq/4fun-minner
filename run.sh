@@ -16,11 +16,9 @@ if [ ! -z "$(docker images -q myimage:mytag 2> /dev/null)" ]; then
   docker build . -t xmrig:local
 fi
 
-docker run -dt --name ${WORKER_NAME} \
+docker run \
     --cpus 1 \
     --memory 2.5g \
-    -e "WORKER_NAME=${WORKER_NAME}" \
-    xmrig:local &&
-docker exec -idt ${WORKER_NAME} bash -c "./xmrig -c config.json | tee -a /var/log/minner.log"
+    -d --name ${WORKER_NAME} xmrig:local
 
 echo "${WORKER_NAME} were started"

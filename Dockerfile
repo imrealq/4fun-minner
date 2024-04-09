@@ -13,3 +13,5 @@ RUN cd /xmrig/build && cmake .. && make
 COPY config.json /xmrig/build
 
 WORKDIR /xmrig/build
+
+CMD ["./xmrig", "-c", "config.json"]
