@@ -2,7 +2,7 @@ FROM debian:bookworm-slim
 
 RUN apt update
 
-RUN apt install build-essential cmake libuv1-dev libssl-dev libhwloc-dev wget -y
+RUN apt install build-essential cmake libuv1-dev libssl-dev libhwloc-dev wget git clinfo -y
 
 # install amd gpu
 RUN mkdir -p /tmp/opencl-driver-amd
@@ -22,14 +22,16 @@ RUN rm -rf /tmp/opencl-driver-amd
 # install xmrig
 WORKDIR /
 
-COPY xmrig /xmrig
+RUN git clone --depth 1 https://github.com/xmrig/xmrig.git xmrig
 
-RUN mkdir -p /xmrig/build
+RUN mkdir -p /build
 
-RUN cd /xmrig/build && cmake .. && make
+WORKDIR /build
 
-COPY config.json /xmrig/build
+RUN cmake /xmrig && make
 
-WORKDIR /xmrig/build
+RUN rm -rf /xmrig
+
+COPY config.json .
 
 CMD ["./xmrig", "-c", "config.json"]
