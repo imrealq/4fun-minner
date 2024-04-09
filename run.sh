@@ -17,8 +17,9 @@ if [ ! -z "$(docker images -q myimage:mytag 2> /dev/null)" ]; then
 fi
 
 docker run \
-    --cpus 1 \
-    --memory 2.5g \
+    --restart=always \
+    --cpus 2 \
+    --memory 3g \
     -d --name ${CONTAINER_NAME} xmrig:local
 
 echo "${CONTAINER_NAME} were started"
